@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/txtcontext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="14dp"
+        android:text="@string/contexto" />
+
+    <TextView
+        android:id="@+id/context"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtcontext"
+        android:layout_alignBottom="@+id/txtcontext"
+        android:layout_marginLeft="14dp"
+        android:layout_toRightOf="@+id/txtcontext" />
+
+    <ImageView
+        android:id="@+id/imageStatus"
+        android:contentDescription="@string/imagenStatusDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/txtcontext"
+        android:layout_marginRight="16dp" />
+
+    <Button
+        android:id="@+id/simIdle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtcontext"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="22dp"
+        android:text="@string/simIdle" />
+
+    <Button
+        android:id="@+id/SimOn_foot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/Preferencias"
+        android:layout_below="@+id/Preferencias"
+        android:text="@string/SimOn_foot" />
+
+    <Button
+        android:id="@+id/Preferencias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/simIdle"
+        android:layout_alignLeft="@+id/simIdle"
+        android:layout_alignRight="@+id/imageStatus"
+        android:layout_marginBottom="99dp"
+        android:onClick="preferences"
+        android:text="@string/btnpref" />
+
+</RelativeLayout>

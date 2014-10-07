@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  - Copyright 2013 Google Inc.
+  -
+  - Licensed under the Apache License, Version 2.0 (the "License"); you may not
+  - use this file except in compliance with the License. You may obtain a copy
+  - of the License at
+  -
+  - http://www.apache.org/licenses/LICENSE-2.0
+  -
+  - Unless required by applicable law or agreed to in writing, software
+  - distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  - WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+  - License for the specific language governing permissions and limitations
+  - under the License.
+-->
+<resources>
+
+    <string name="app_name">Moodle</string>
+    <string name="send">Send</string>
+    <string name="clear">Clear</string>
+    <string name="send_xmpp">send xmpp</string>
+    <string name="contexto">Contexto: </string>
+    <string name="imagenStatusDescription">Estado de la conexion</string>
+    <string name="simIdle">Sim Idle</string>
+    <string name="textopref">Esto es una prueba del panel de preferencias</string>
+    <string name="btnpref">Preferencias</string>
+    <string name="SimOn_foot">Sim On_foot</string>
+	<string name="infoNotificacion">info</string>
+	<string name="back">Atrás</string>
+	<string name="restrichoraria">Restricción horaria</string>
+	<string name="ubicacion">Restricción de ubicación</string>
+	<string name="addrestrictTime"> Añade una restricción horaria</string>
+	<string name="plus">+</string>
+	<string name="timestart">Hora de comienzo</string>
+	<string name="timeend">Hora de finalización</string>
+	<string name="delete_string">Eliminar</string>
+	<string name="accept">Aceptar</string>
+</resources>
