@@ -19,7 +19,6 @@
         android:layout_alignBaseline="@+id/plus"
         android:layout_alignBottom="@+id/plus"
         android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@+id/plus"
         android:text="@string/addrestrictTime"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 

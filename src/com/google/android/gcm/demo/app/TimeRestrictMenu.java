@@ -114,12 +114,11 @@ public class TimeRestrictMenu extends ListActivity {
 	@Override
 	// creación del menu contextual(menu que aparece al dejar pulsado un elemento de la lista)
 	public void onCreateContextMenu(ContextMenu menu, View v,ContextMenuInfo menuInfo) {
-		// TODO Auto-generated method stub
 		super.onCreateContextMenu(menu, v, menuInfo);
 		// menu inflater es el menu que aparece al dejar pulsado un elemento de
 		// la lista
 		MenuInflater m = getMenuInflater();
-		// restricttimemenucontextmenu contiene el boton eliminar
+		// restricttimemenucontextmenu es el xml que contiene el boton eliminar
 		m.inflate(R.menu.restricttimemenucontextmenu, menu);
 	}
 
@@ -157,7 +156,6 @@ public class TimeRestrictMenu extends ListActivity {
 			listItems.remove(position);
 			this.adapter.notifyDataSetChanged();
 
-			// return true;
 		}
 		return super.onContextItemSelected(item);
 	}
@@ -166,7 +164,12 @@ public class TimeRestrictMenu extends ListActivity {
 	// cuando se pulse un item se abrira una nueva activity con la seleccion de
 	// la restriccion horaria
 	protected void onListItemClick(ListView l, View v, int position, long id) {
-
+		
+		/**TextView textoTitulo = (TextView) view.findViewById(R.id.textView_superior);
+		if(v.){
+			
+		}**/
+		
 		Intent appInfo = new Intent(TimeRestrictMenu.this, TimeRestrict.class);
 		startActivity(appInfo);
 
