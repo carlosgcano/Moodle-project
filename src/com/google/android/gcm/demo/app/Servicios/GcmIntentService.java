@@ -22,6 +22,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.media.RingtoneManager;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -90,9 +91,12 @@ public class GcmIntentService extends IntentService {
         String content = "";
 
                 try {
-                    content = httprequest.sendGet(
+                    /*content = httprequest.sendGet(
                             "http://usevilla.ingenia.es/apiuse/api.php",
-                            "user=alumno&pass=alumno&contexto=idle&tiempo=30");
+                            "user=alumno&pass=alumno&contexto=idle&tiempo=30");*/
+                    content = httprequest.sendGet(
+                            "http://usevilla.ingenia.es/apiuse/cursos.php",
+                            "user=a1&pass=a1");
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -109,6 +113,7 @@ public class GcmIntentService extends IntentService {
         .setContentTitle("Moodle Notification")
         .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
         .setAutoCancel(true)
+        .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
         .setVibrate(new long[] { 200, 500 })
         .setLights(0xffffffff, 300, 1000)
         .setContentText("Tienes actividades pendientes para realizar")

@@ -42,8 +42,7 @@ public class TimeRestrict extends Activity {
 				Editor editor = prefs.edit();
 
 				//obtenemos la hora de inicio
-				//getCurrentHour() nos da la hora que pone el timepicker
-				
+				//getCurrentHour() nos da la hora que pone el timepicker por defecto, antes de modificarla		
 				
 				String ini ="";
 				Integer hourini=inicio.getCurrentHour();				
@@ -100,7 +99,7 @@ public class TimeRestrict extends Activity {
 					
 						
 						Toast.makeText(getBaseContext(), "Fecha añadida",
-								Toast.LENGTH_LONG).show();
+								Toast.LENGTH_LONG  ).show();
 
 						// para guardar el campo en shared preferences antes
 						// necesitamos obtener un indice que sea diferente de

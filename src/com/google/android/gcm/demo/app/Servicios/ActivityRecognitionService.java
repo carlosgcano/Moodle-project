@@ -4,6 +4,7 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.util.Log;
 
+import com.google.android.gcm.demo.app.ServerUtilities;
 import com.google.android.gms.location.ActivityRecognitionResult;
 import com.google.android.gms.location.DetectedActivity;
 
@@ -29,15 +30,16 @@ public class ActivityRecognitionService extends IntentService{
 				
 				Log.d(TAG, "ActivityRecognitionResult: "+getFriendlyName(result.getMostProbableActivity().getType()));
 				Log.d(TAG, result.toString());
-
+				System.out.println("hola");
 				if(lastContext != context){
 					lastContext = context;
-					
+					System.out.println("hola2");
 					Intent i = new Intent("MOVIL_STATE");
 					i.putExtra("Context", getFriendlyName(result.getMostProbableActivity().getType()));
 					sendBroadcast(i);
 					//Enviamos un mensaje a GCM con el estado del movil.
-					//ServerUtilities.sendXmpp(getApplicationContext(), context);
+					ServerUtilities.sendXmpp(getApplicationContext(), context);
+					Log.d(TAG, "estado enviado");
 				}
 			}else{
 				Log.d(TAG, "No hay resultados");
