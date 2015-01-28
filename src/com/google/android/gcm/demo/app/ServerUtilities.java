@@ -152,6 +152,7 @@ public class ServerUtilities {
 	                    data.putString("tiempo", "15");
 	                    
 	                    String id = Integer.toString(DemoActivity.msgId.incrementAndGet());
+	                    System.out.println("bundledata: "+ data);
 	                    gcm.send(DemoActivity.SENDER_ID + "@gcm.googleapis.com", id, data);
 	                    Log.d("sendXmpp", "Enviando GCM...");
 	                } 

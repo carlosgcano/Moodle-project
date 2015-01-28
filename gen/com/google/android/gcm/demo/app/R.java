@@ -228,8 +228,8 @@ containing a value of this type.
         public static final int terrain=0x7f050003;
         public static final int textView=0x7f05001f;
         public static final int timeRestricAccept=0x7f05001a;
-        public static final int timeend=0x7f05001d;
-        public static final int timeend2=0x7f05001e;
+        public static final int timeend=0x7f05001e;
+        public static final int timeend2=0x7f05001d;
         public static final int timestart=0x7f05001b;
         public static final int timestart2=0x7f05001c;
         public static final int tipoContexto=0x7f050007;

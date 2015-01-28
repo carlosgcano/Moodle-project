@@ -26,10 +26,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/timestart2"
         android:layout_below="@+id/restrichorariainfo"
         android:layout_marginTop="14dp"
         android:text="@string/timestart"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="20sp" />
 
     <TimePicker
         android:id="@+id/timestart2"
@@ -38,21 +40,22 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/timestart" />
 
-    <TextView
-        android:id="@+id/timeend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/timestart2"
-        android:layout_marginTop="14dp"
-        android:text="@string/timeend"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <TimePicker
         android:id="@+id/timeend2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/timeend" />
+        android:layout_above="@+id/timeRestricAccept"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:id="@+id/timeend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/timeend2"
+        android:layout_alignLeft="@+id/timeend2"
+        android:layout_alignParentRight="true"
+        android:text="@string/timeend"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="20sp" />
 
 </RelativeLayout>
