@@ -1,0 +1,130 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  Internal Error (javaClasses.cpp:126), pid=4252, tid=6356
+#  fatal error: Invalid layout of preloaded class
+#
+# JRE version:  (8.0_20-b26) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.20-b23 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.sun.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000000210e000):  JavaThread "Unknown thread" [_thread_in_vm, id=6356, stack(0x0000000002450000,0x0000000002550000)]
+
+Stack: [0x0000000002450000,0x0000000002550000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x3152fa]
+V  [jvm.dll+0x265d03]
+V  [jvm.dll+0x266943]
+V  [jvm.dll+0x25e1e6]
+V  [jvm.dll+0x5e64c]
+V  [jvm.dll+0x5e743]
+V  [jvm.dll+0x7316a]
+V  [jvm.dll+0x734c8]
+V  [jvm.dll+0xe3937]
+V  [jvm.dll+0xe3cc6]
+V  [jvm.dll+0x1f89d7]
+V  [jvm.dll+0x229fc4]
+V  [jvm.dll+0x14c6f1]
+C  [javaw.exe+0x20c6]
+C  [javaw.exe+0xc9eb]
+C  [javaw.exe+0xca7f]
+C  [kernel32.dll+0x159ed]
+C  [ntdll.dll+0x2c541]
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x000000000210e000 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=6356, stack(0x0000000002450000,0x0000000002550000)]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (10 events):
+Event: 0.006 loading class java/lang/CharSequence done
+Event: 0.006 loading class java/lang/String done
+Event: 0.006 loading class java/lang/Class
+Event: 0.006 loading class java/lang/reflect/AnnotatedElement
+Event: 0.006 loading class java/lang/reflect/AnnotatedElement done
+Event: 0.006 loading class java/lang/reflect/GenericDeclaration
+Event: 0.006 loading class java/lang/reflect/GenericDeclaration done
+Event: 0.006 loading class java/lang/reflect/Type
+Event: 0.006 loading class java/lang/reflect/Type done
+Event: 0.006 loading class java/lang/Class done
+
+
+Dynamic libraries:
+0x000000013f150000 - 0x000000013f184000 	C:\Program Files\Java\jre1.8.0_20\bin\javaw.exe
+0x00000000771d0000 - 0x0000000077379000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00000000770b0000 - 0x00000000771cf000 	C:\Windows\system32\kernel32.dll
+0x000007fefcfd0000 - 0x000007fefd03c000 	C:\Windows\system32\KERNELBASE.dll
+0x000007fefd5c0000 - 0x000007fefd69b000 	C:\Windows\system32\ADVAPI32.dll
+0x000007feff0f0000 - 0x000007feff18f000 	C:\Windows\system32\msvcrt.dll
+0x000007fefd5a0000 - 0x000007fefd5bf000 	C:\Windows\SYSTEM32\sechost.dll
+0x000007feff3b0000 - 0x000007feff4dd000 	C:\Windows\system32\RPCRT4.dll
+0x0000000076fb0000 - 0x00000000770aa000 	C:\Windows\system32\USER32.dll
+0x000007fefddd0000 - 0x000007fefde37000 	C:\Windows\system32\GDI32.dll
+0x000007fefddc0000 - 0x000007fefddce000 	C:\Windows\system32\LPK.dll
+0x000007fefd750000 - 0x000007fefd819000 	C:\Windows\system32\USP10.dll
+0x000007fefb9f0000 - 0x000007fefbbe4000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.17514_none_fa396087175ac9ac\COMCTL32.dll
+0x000007fefd6a0000 - 0x000007fefd711000 	C:\Windows\system32\SHLWAPI.dll
+0x000007fefd720000 - 0x000007fefd74e000 	C:\Windows\system32\IMM32.DLL
+0x000007fefd960000 - 0x000007fefda69000 	C:\Windows\system32\MSCTF.dll
+0x0000000073300000 - 0x00000000733d2000 	C:\Program Files\Java\jre1.8.0_20\bin\msvcr100.dll
+0x0000000072aa0000 - 0x00000000732f8000 	C:\Program Files\Java\jre1.8.0_20\bin\server\jvm.dll
+0x000007feed7f0000 - 0x000007feed7f9000 	C:\Windows\system32\WSOCK32.dll
+0x000007fefebd0000 - 0x000007fefec1d000 	C:\Windows\system32\WS2_32.dll
+0x000007feff320000 - 0x000007feff328000 	C:\Windows\system32\NSI.dll
+0x000007fefacf0000 - 0x000007fefad2b000 	C:\Windows\system32\WINMM.dll
+0x0000000077390000 - 0x0000000077397000 	C:\Windows\system32\PSAPI.DLL
+0x00000000735d0000 - 0x00000000735df000 	C:\Program Files\Java\jre1.8.0_20\bin\verify.dll
+0x00000000735a0000 - 0x00000000735c8000 	C:\Program Files\Java\jre1.8.0_20\bin\java.dll
+0x0000000073580000 - 0x0000000073596000 	C:\Program Files\Java\jre1.8.0_20\bin\zip.dll
+0x000007feeb5c0000 - 0x000007feeb6e5000 	C:\Windows\system32\dbghelp.dll
+
+VM Arguments:
+jvm_args: -Djava.library.path=C:\Users\Equipo1\Desktop\AndroidProyect\AndroidProyect\GCM Server\GCM Server\src;C:\Users\Equipo1\Desktop\AndroidProyect\AndroidProyect\GCM Server\GCM Server -Dfile.encoding=Cp1252 -Xbootclasspath:C:\adt-bundle-windows-x86_64-20140702\sdk\platforms\android-19\android.jar 
+java_command: gcmserver.SmackCcsClient
+java_class_path (initial): C:\Users\Equipo1\Documents\AndroidProject\MoodleProject\libs\httpcore-4.3.2.jar;C:\Users\Equipo1\Documents\AndroidProject\MoodleProject\libs\android-support-v4.jar;C:\Users\Equipo1\Desktop\AndroidProyect\AndroidProyect\googlePlayServices\google-play-services_lib\libs\google-play-services.jar;C:\Users\Equipo1\Documents\AndroidProject\MoodleProject\libs\json-simple-1.1.1.jar;C:\Users\Equipo1\Documents\AndroidProject\MoodleProject\libs\smack-3.4.1-0cec571.jar;C:\Users\Equipo1\Desktop\AndroidProyect\AndroidProyect\googlePlayServices\google-play-services_lib\bin\google-play-services_lib.jar;C:\Users\Equipo1\Documents\AndroidProject\MoodleProject\bin\classes;C:\Users\Equipo1\Desktop\AndroidProyect\AndroidProyect\GCM Server\GCM Server\bin;C:\Users\Equipo1\Desktop\AndroidProyect\AndroidProyect\GCM Server\GCM Server\libs\smack-3.4.1-0cec571.jar;C:\Users\Equipo1\Desktop\AndroidProyect\AndroidProyect\GCM Server\GCM Server\libs\httpcore-4.3.2.jar;C:\Users\Equipo1\Desktop\AndroidProyect\AndroidProyect\GCM Server\GCM Server\libs\json-simple-1.1.1.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\OpenVPN\bin
+USERNAME=Equipo1
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 60 Stepping 3, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 , 64 bit Build 7601 Service Pack 1
+
+CPU:total 4 (4 cores per cpu, 1 threads per core) family 6 model 60 stepping 3, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, lzcnt, tsc, tscinvbit, bmi1, bmi2
+
+Memory: 4k page, physical 8271392k(3998512k free), swap 16540924k(9364688k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.20-b23) for windows-amd64 JRE (1.8.0_20-b26), built on Jul 30 2014 13:51:23 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Tue Jan 27 13:15:21 2015
+elapsed time: 0 seconds (0d 0h 0m 0s)
+
