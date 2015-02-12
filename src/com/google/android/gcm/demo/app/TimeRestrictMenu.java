@@ -45,10 +45,6 @@ public class TimeRestrictMenu extends ListActivity {
 		// Lo vincula a la interfaz
 		setContentView(R.layout.timerestrictmenu);
 		
-		
-		System.out.println("prueba sharepref");
-		// if(prefs.contains("timeRestrict")){
-		System.out.println(prefs.getString("timeRestrict", "valor por defecto"));
 		for (String s : prefs.getAll().keySet()) {
 			if (s.contains("timeRestrict"))
 				System.out.println(prefs.getString("timeRestrict" + (i),"valor por defecto"));
@@ -61,7 +57,7 @@ public class TimeRestrictMenu extends ListActivity {
 		// da google
 
 		// no hace falta llamar al listview en el que vamos a meter los datos ya
-		// que llama al list view por defecto, para ello al listview de
+		// que llama al list view por defecto, para que lo pueda llamar al listview de
 		// timerestrictmenu.xml le ponemos de id: @android:id/list
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, listItems);
@@ -76,6 +72,7 @@ public class TimeRestrictMenu extends ListActivity {
 		for (String s : prefs.getAll().keySet()) {
 			if (s.contains("timeRestrict"))
 				listItems.add((String) prefs.getAll().get(s));
+				
 		}
 
 		listView.setTextFilterEnabled(true);
@@ -112,7 +109,7 @@ public class TimeRestrictMenu extends ListActivity {
 	}
 
 	@Override
-	// creación del menu contextual(menu que aparece al dejar pulsado un elemento de la lista)
+	// creación del menu contextual(menu que aparece al dejar pulsado sobre un elemento de la lista)
 	public void onCreateContextMenu(ContextMenu menu, View v,ContextMenuInfo menuInfo) {
 		super.onCreateContextMenu(menu, v, menuInfo);
 		// menu inflater es el menu que aparece al dejar pulsado un elemento de
@@ -164,11 +161,6 @@ public class TimeRestrictMenu extends ListActivity {
 	// cuando se pulse un item se abrira una nueva activity con la seleccion de
 	// la restriccion horaria
 	protected void onListItemClick(ListView l, View v, int position, long id) {
-		
-		/**TextView textoTitulo = (TextView) view.findViewById(R.id.textView_superior);
-		if(v.){
-			
-		}**/
 		
 		Intent appInfo = new Intent(TimeRestrictMenu.this, TimeRestrict.class);
 		startActivity(appInfo);

@@ -26,14 +26,18 @@
     <string name="textopref">Esto es una prueba del panel de preferencias</string>
     <string name="btnpref">Preferencias</string>
     <string name="SimOn_foot">Sim On_foot</string>
-	<string name="infoNotificacion">info</string>
-	<string name="back">Atrás</string>
-	<string name="restrichoraria">Restricción horaria</string>
-	<string name="ubicacion">Restricción de ubicación</string>
-	<string name="addrestrictTime"> Añade una restricción horaria</string>
-	<string name="plus">+</string>
-	<string name="timestart">Hora de comienzo</string>
-	<string name="timeend">Hora de finalización</string>
-	<string name="delete_string">Eliminar</string>
-	<string name="accept">Aceptar</string>
+    <string name="infoNotificacion">info</string>
+    <string name="back">Atrás</string>
+    <string name="restrichoraria">Restricción horaria</string>
+    <string name="ubicacion">Restricción de ubicación</string>
+    <string name="addrestrictTime"> Añade una restricción horaria</string>
+    <string name="plus">+</string>
+    <string name="timestart">Hora de comienzo</string>
+    <string name="timeend">Hora de finalización</string>
+    <string name="delete_string">Eliminar</string>
+    <string name="accept">Aceptar</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
 </resources>

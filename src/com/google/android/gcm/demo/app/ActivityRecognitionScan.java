@@ -35,6 +35,7 @@ public class ActivityRecognitionScan
 		Log.d(TAG,"startActivityRecognitionScan");
 	}
 
+	
 	public void stopActivityRecognitionScan(){
 		try{
 			mActivityRecognitionClient.removeActivityUpdates(callbackIntent);
@@ -44,6 +45,7 @@ public class ActivityRecognitionScan
 		}
 	}
 
+	
 	@Override
 	public void onConnectionFailed(ConnectionResult result) {
 		Log.d(TAG,"onConnectionFailed");
@@ -53,13 +55,17 @@ public class ActivityRecognitionScan
 	* Connection established - start listening now
 	*/
 	@Override
+	//decidimos con que frecuencia se recibiran los datos
 	public void onConnected(Bundle connectionHint) {
 		Intent intent = new Intent(context, ActivityRecognitionService.class);
+		
 		callbackIntent = PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-		mActivityRecognitionClient.requestActivityUpdates(0, callbackIntent); //60000 = 1min// 0 sets it to update as fast as possible, just use this for testing!
+		mActivityRecognitionClient.requestActivityUpdates(2000, callbackIntent); //60000 = 1min// 0 sets it to update as fast as possible, just use this for testing!
 		Log.d(TAG,"onConnection");
 	}
 
 	@Override
-	public void onDisconnected() {}
+	public void onDisconnected() {		
+		
+	}
 }

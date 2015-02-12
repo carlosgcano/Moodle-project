@@ -166,6 +166,17 @@ containing a value of this type.
         public static final int common_signin_btn_text_dark=0x7f04000a;
         public static final int common_signin_btn_text_light=0x7f04000b;
     }
+    public static final class dimen {
+        /**  Default screen margins, per the Android Design guidelines. 
+
+         Example customization of dimensions originally defined in res/values/dimens.xml
+         (such as screen margins) for screens with more than 820dp of available width. This
+         would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
+    
+         */
+        public static final int activity_horizontal_margin=0x7f080000;
+        public static final int activity_vertical_margin=0x7f080001;
+    }
     public static final class drawable {
         public static final int common_signin_btn_icon_dark=0x7f020000;
         public static final int common_signin_btn_icon_disabled_dark=0x7f020001;
@@ -202,12 +213,13 @@ containing a value of this type.
         public static final int Button01=0x7f050018;
         public static final int Preferencias=0x7f050013;
         public static final int SimOn_foot=0x7f050012;
+        public static final int action_settings=0x7f050024;
         public static final int back=0x7f050016;
         public static final int back1=0x7f050023;
         public static final int btnBack=0x7f050015;
         public static final int clear=0x7f05000d;
         public static final int context=0x7f05000f;
-        public static final int delete_item=0x7f050024;
+        public static final int delete_item=0x7f050025;
         public static final int display=0x7f05000a;
         public static final int editText=0x7f050009;
         public static final int hybrid=0x7f050004;
@@ -252,11 +264,13 @@ containing a value of this type.
         public static final int timerestrictmenu=0x7f030008;
     }
     public static final class menu {
-        public static final int restricttimemenucontextmenu=0x7f080000;
+        public static final int main=0x7f090000;
+        public static final int restricttimemenucontextmenu=0x7f090001;
     }
     public static final class string {
         public static final int SimOn_foot=0x7f060023;
         public static final int accept=0x7f06002d;
+        public static final int action_settings=0x7f060030;
         public static final int addrestrictTime=0x7f060028;
         public static final int app_name=0x7f06001a;
         /**   Title for notification shown when GooglePlayServices needs to be
@@ -358,6 +372,7 @@ containing a value of this type.
         public static final int common_signin_button_text_long=0x7f060013;
         public static final int contexto=0x7f06001e;
         public static final int delete_string=0x7f06002c;
+        public static final int hello_world=0x7f06002f;
         public static final int imagenStatusDescription=0x7f06001f;
         public static final int infoNotificacion=0x7f060024;
         public static final int plus=0x7f060029;
@@ -368,6 +383,7 @@ containing a value of this type.
         public static final int textopref=0x7f060021;
         public static final int timeend=0x7f06002b;
         public static final int timestart=0x7f06002a;
+        public static final int title_activity_main=0x7f06002e;
         public static final int ubicacion=0x7f060027;
     }
     public static final class styleable {

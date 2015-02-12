@@ -16,12 +16,16 @@
 
 package com.google.android.gcm.demo.app.Servicios;
 
+
 import gcmserver.HttpRequest;
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.media.RingtoneManager;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
@@ -32,7 +36,6 @@ import com.google.android.gcm.demo.app.GcmBroadcastReceiver;
 import com.google.android.gcm.demo.app.NotificationView;
 import com.google.android.gcm.demo.app.R;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
-
 /**
  * This {@code IntentService} does the actual handling of the GCM message.
  * {@code GcmBroadcastReceiver} (a {@code WakefulBroadcastReceiver}) holds a
@@ -40,7 +43,7 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
  * service is finished, it calls {@code completeWakefulIntent()} to release the
  * wake lock.
  */
-public class GcmIntentService extends IntentService {
+public class GcmIntentService extends IntentService{
     public HttpRequest httprequest = (HttpRequest) new HttpRequest();
     public static final int NOTIFICATION_ID = 1;
     private NotificationManager mNotificationManager;
@@ -54,6 +57,8 @@ public class GcmIntentService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
     	
+		
+    	
     	//recogemos lo que traiga el intent.
         Bundle extras = intent.getExtras();
         GoogleCloudMessaging gcm = GoogleCloudMessaging.getInstance(this);
@@ -61,7 +66,7 @@ public class GcmIntentService extends IntentService {
         // in your BroadcastReceiver.
         String messageType = gcm.getMessageType(intent);
 
-        if (!extras.isEmpty()) {  // has effect of unparcelling Bundle
+        if (!extras.isEmpty()) {  // has  effect of unparcelling Bundle
             /*
              * Filter messages based on message type. Since it is likely that GCM will be
              * extended in the future with new message types, just ignore any message types you're
@@ -74,9 +79,16 @@ public class GcmIntentService extends IntentService {
             // If it's a regular GCM message, do some work.
             } else if (GoogleCloudMessaging.MESSAGE_TYPE_MESSAGE.equals(messageType)) {
                 //sendNotification("Received at "+ new SimpleDateFormat("HH:mm:ss.SSS").format(new Date())+" : " + extras.getString("msg").toString());
-            	Log.d("onHandleIntent","GCM recibido...");
+            	
             	//Log.d("GCM data", extras.getString("data"));
+            	
+            	
+            	Log.d("onHandleIntent","GCM recibido...");
             	sendNotification(extras.getString("data"), intent);
+            		
+            	
+            		
+            	
             }
         }
         // Release the wake lock provided by the WakefulBroadcastReceiver.

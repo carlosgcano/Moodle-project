@@ -34,6 +34,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.MailTo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings.Secure;
@@ -67,8 +68,11 @@ public class DemoActivity extends Activity{
     static final String TAG = "GCM Demo";
     public static final AtomicInteger msgId = new AtomicInteger();
     
+    private static DemoActivity instance;
+    private static SharedPreferences prefs;
     EditText mEditText;
-    TextView mDisplay, mContext;
+    TextView mContext;
+    TextView mDisplay;
     ImageView mStatus;
     Button mSimIdle, mSimOn_foot; 
     GoogleCloudMessaging gcm;
@@ -77,21 +81,25 @@ public class DemoActivity extends Activity{
     ComponentName service;
     //JackPlugBroadcastReceiver receiver = new JackPlugBroadcastReceiver();
     
-    /**SharedPreferences prefs = getSharedPreferences("preferences", MODE_PRIVATE);
-    SharedPreferences.Editor editor = prefs.edit();**/
+    AsyncTask<Void, Void, String> a;
+
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        prefs = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
         setContentView(R.layout.main2);
         UDID = Secure.getString(getApplicationContext().getContentResolver(), Secure.ANDROID_ID);
 //        mDisplay = (TextView) findViewById(R.id.display);
         mContext = (TextView) findViewById(R.id.context);
+        
 //        mEditText = (EditText) findViewById(R.id.editText);
         mStatus = (ImageView) findViewById(R.id.imageStatus);
         mSimIdle = (Button) findViewById(R.id.simIdle);
         mSimOn_foot =(Button) findViewById(R.id.SimOn_foot);
         context = getApplicationContext();
+        
+        
         
         // Check device for Play Services APK. If check succeeds, proceed with GCM registration.
         if (checkPlayServices()) {
@@ -134,9 +142,15 @@ public class DemoActivity extends Activity{
 			public void onClick(View v) {
 				/**editor.putInt("contexto", 2);
 				editor.commit();**/
-				ServerUtilities.sendXmpp(context, "on_foot");
+				
+				//ServerUtilities.sendXmpp(context, "idle");
+				//ServerUtilities.Interrupt();
+
 			}
 		});
+        
+        instance=this;
+        
     }
     
     @Override
@@ -151,11 +165,32 @@ public class DemoActivity extends Activity{
     }
 
     @Override
+    //Cuando se cierra la aplicacion o desaparece de memoria, hay que parar todos los hilos en ejecucion.
+    //Ondestroy es un metodo que funciona justo antes de quitar de memoria la aplicacion
+    //Si ponemos a null un thread nos aseguramos que ese hilo se cerrara una vez terminada la aplicacion
+    //otras formas de hacerlo es con getthread().interrupt() o llamando al metodo notify del asynctask y haciendo
+    //interrupt en el hijo
     protected void onDestroy() {
-        super.onDestroy();
+    	super.onDestroy(); 
+    	//cancelamos el hilo que hace la peticion del reconocimiento de actividad
+    	ServerUtilities.Interruption();
+    	//cancelamos el hilo que llama a Server utilities
+    	a.cancel(true);
+    	//finalizamos el hilo principal
+    	DemoActivity.this.finish();
+
+    	
+    	
     }
+
+    public static SharedPreferences getPrefs() {
+		synchronized (DemoActivity.class) {			
+			return prefs;				
+		}
+    	
+	}
     
-    /**
+	/**
      *  Broadcast para actualizar el contexto desde el servicio
      * 
      * */
@@ -215,6 +250,7 @@ public class DemoActivity extends Activity{
      * to a server that echoes back the message using the 'from' address in the message.
      */
     private void sendRegistrationIdToBackend() {
+    	
     	ServerUtilities.register(UDID, regid);
     }
     
@@ -275,7 +311,7 @@ public class DemoActivity extends Activity{
      * shared preferences.
      */
     private void registerInBackground() {
-        new AsyncTask<Void, Void, String>() {
+       a= new AsyncTask<Void, Void, String>() {
             @Override
             protected String doInBackground(Void... params) {
                 String msg = "";
@@ -290,7 +326,7 @@ public class DemoActivity extends Activity{
                     // can use GCM/HTTP or CCS to send messages to your app.
                     sendRegistrationIdToBackend();
 
-                    // For this demo: we don't need to send it because the device will send
+                    //  For this demo: we don't need to send it because the device will send
                     // upstream messages to a server that echo back the message using the
                     // 'from' address in the message.
 
@@ -307,7 +343,11 @@ public class DemoActivity extends Activity{
 
             @Override
             protected void onPostExecute(String msg) {
-                mDisplay.append(msg + "\n");
+            	
+            	if(mDisplay!=null){
+            		mDisplay.append(msg + "\n");
+            	}
+                	
             }
         }.execute(null, null, null);
     }
@@ -328,6 +368,12 @@ public class DemoActivity extends Activity{
         editor.putInt(PROPERTY_APP_VERSION, appVersion);
         editor.commit();
     }
+    
+    public static DemoActivity getInstance() {
+		return instance;
+	}
+    
+    
     //Vincula las 2 actividades: preferencias y principal
     public void preferences(View view){
         Intent i = new Intent(this, Preferences.class);

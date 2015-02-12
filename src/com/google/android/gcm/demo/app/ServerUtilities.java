@@ -1,13 +1,19 @@
 package com.google.android.gcm.demo.app;
 
 import java.io.IOException;
+
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 import java.util.Map.Entry;
 
 import android.content.Context;
@@ -16,6 +22,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.android.gcm.demo.app.Servicios.NotificationRestrictions;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 
@@ -26,6 +33,10 @@ public class ServerUtilities {
 
 		private static final String SERVER_URL = "http://garmo.cica.es/gcm/";
 	    private static final String TAG = "ServerUtilities";
+	    
+	    //final static NotificationRestrictions notificationRestrictions=new NotificationRestrictions();
+	    static boolean activeTimeRestrict=false;
+		static AsyncTask<Void, Void, String> a;
 	    
 	   /**
 	     * Register this account/device pair within the server.
@@ -45,7 +56,6 @@ public class ServerUtilities {
                 Log.e(TAG, "Failed to register:" + e);
             }
         }
-	 
 	    /**
 	     * Unregister this account/device pair within the server.
 	     */
@@ -130,39 +140,67 @@ public class ServerUtilities {
 	        }
 	      }
 	    
+	    //Este metodo se llama desde la clase principal(demoactivity) para parar el hilo que crea el asynctask
+	    public static void Interruption(){
+	    	
+	    	a=null;
+	    	//a.cancel(true);
+	    }
+	    
+	    
 		public static void sendXmpp(final Context context, final String contexto)
 		{
 			
+			 
+		   
+			//Llamamos al metodo isRestrict de la clase NotificationRestrictions que nos dice
+        	//si la hora actual pertenece a una franja horaria restringida para el envio de notificaciones
+        	//el atributo prefs es un sharedpreferences donde tenemos guardadas todas las franjas horarias restringidas
+        	//Si no estamos en una franja horaria restringida nos dejara enviar la notificación
+
+			final NotificationRestrictions notificationRestrictions=new NotificationRestrictions();
+			activeTimeRestrict =notificationRestrictions.isRestrict();
+			System.out.println("Valor al enviar gcm: "+activeTimeRestrict);
 			
-			
-			
-			//creamos una una AsyncTask para enviar un gcm al servidor
-			new AsyncTask<Void, Void, String>() 
-			{
-				GoogleCloudMessaging gcm = GoogleCloudMessaging.getInstance(context);
-	            @Override
-	            protected String doInBackground(Void... params) 
-	            {
-	                try 
-	                {
-	                    Bundle data = new Bundle();
-	                    data.putString("user", "alumno");
-	                    data.putString("pass", "alumno");
-	                    data.putString("contexto", contexto);
-	                    data.putString("tiempo", "15");
-	                    
-	                    String id = Integer.toString(DemoActivity.msgId.incrementAndGet());
-	                    System.out.println("bundledata: "+ data);
-	                    gcm.send(DemoActivity.SENDER_ID + "@gcm.googleapis.com", id, data);
-	                    Log.d("sendXmpp", "Enviando GCM...");
-	                } 
-	                catch (IOException ex) 
-	                {
-	                }
-	                return "";
-	            }
-	        }.execute(null, null, null);
-	        
+			 if(!activeTimeRestrict){
+							
+				//creamos un AsyncTask para enviar un gcm al servidor
+				a = new AsyncTask<Void, Void, String>() 
+				{
+					GoogleCloudMessaging gcm = GoogleCloudMessaging.getInstance(context);
+		            //@Override
+		            protected String doInBackground(Void... params) 
+		            {
+		                try 
+		                {
+		                    Bundle data = new Bundle();
+		                    data.putString("user", "alumno");
+		                    data.putString("pass", "alumno");
+		                    data.putString("contexto", contexto);
+		                    data.putString("tiempo", "15");
+		                    
+		                    String id = Integer.toString(DemoActivity.msgId.incrementAndGet());
+		                    System.out.println("bundledata: "+ data);
+		                    gcm.send(DemoActivity.SENDER_ID + "@gcm.googleapis.com", id, data);
+		                    Log.d("sendXmpp", "Enviando GCM...");
+
+		                    if(DemoActivity.getInstance() ==null){
+		                    	Boolean b =cancel(true);
+		                    	cancel(true);
+		                    	Log.d("comprobacion demoactivity", "cancel(true)= "+b.toString());
+		                    }
+		                    
+		                } 
+		                catch (IOException ex) 
+		                {
+		                	
+		                }
+		                return "";
+		            }
+		        }.execute(null, null, null);
+			}else{
+				System.out.println("GCM no enviado por restriccion horaria");
+			}
 			
 		}
 		

@@ -1,17 +1,25 @@
 package com.google.android.gcm.demo.app.Servicios;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import android.app.IntentService;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.google.android.gcm.demo.app.DemoActivity;
 import com.google.android.gcm.demo.app.ServerUtilities;
 import com.google.android.gms.location.ActivityRecognitionResult;
 import com.google.android.gms.location.DetectedActivity;
 
 public class ActivityRecognitionService extends IntentService{
-
+	
+	
+		
 		private static final String TAG ="ActivityRecognition";
-
+		private static final Set<String> defValues= new HashSet<String>();
 		public ActivityRecognitionService() {
 			super("ActivityRecognitionService");
 		}
@@ -35,8 +43,10 @@ public class ActivityRecognitionService extends IntentService{
 					Intent i = new Intent("MOVIL_STATE");
 					i.putExtra("Context", getFriendlyName(result.getMostProbableActivity().getType()));
 					sendBroadcast(i);
+					
 					//Enviamos un mensaje a GCM con el estado del movil.
 					ServerUtilities.sendXmpp(getApplicationContext(), context);
+					
 				}
 			}else{
 				Log.d(TAG, "No hay resultados");
@@ -51,18 +61,21 @@ public class ActivityRecognitionService extends IntentService{
 		private static String getFriendlyName(int detected_activity_type){
 			switch (detected_activity_type ) {
 				case DetectedActivity.IN_VEHICLE:
-					return "in_vehicle";
+					return "En coche";
 				case DetectedActivity.ON_BICYCLE:
-					return "on_bicycle";
+					return "En bicicleta";
 				case DetectedActivity.ON_FOOT:
-					return "on_foot";
+					return "Andando";
 				case DetectedActivity.TILTING:
-					return "tilting";
+					return "Inclinado";
 				case DetectedActivity.STILL:
-					return "idle";
+					return "Parado";
 				default:
-					return "Desconocido";
+					return "Contexto desconocido";
 			}
+		}
+		public void stop(){
+			this.stopSelf();
 		}
 }
 

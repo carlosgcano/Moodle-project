@@ -52,8 +52,6 @@ public class NotificationView extends Activity {
 	private ListView list;
 	String url;
 
-	// SharedPreferences prefs =
-	// getSharedPreferences("MisPreferencias",Context.MODE_PRIVATE);
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
@@ -65,7 +63,7 @@ public class NotificationView extends Activity {
 		btnBack = (Button) findViewById(R.id.btnBack);
 		btnBack.setOnClickListener(new View.OnClickListener() {
 			// Cuando pulsamos se inicia la funcion finish, la cual cierra la
-			// activity
+			// activity 
 			@Override
 			public void onClick(View v) {
 				finish();
@@ -99,7 +97,6 @@ public class NotificationView extends Activity {
 
 	private class Ejecuta extends AsyncTask<Void, Void, Void> {
 
-		int i = -1;
 
 		@Override
 		protected void onPreExecute() {
@@ -179,13 +176,14 @@ public class NotificationView extends Activity {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
+				
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
+			
 			return null;
 		}
 
